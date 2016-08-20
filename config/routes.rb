@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :reddits
+  resources :reddits do
+    resources :posts
+  end
 end

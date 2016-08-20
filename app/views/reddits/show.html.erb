@@ -1,0 +1,9 @@
+<h1><%= @reddit.title %></h1>
+<p>
+  New post <br>
+  <%= link_to 'Create post', new_reddit_post_path(@reddit) %>
+</p>
+<% @reddit.posts.each do |p| %>
+  <%= p %>
+<% end %>
+<%= link_to 'Back', reddits_path %>

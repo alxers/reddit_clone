@@ -1,4 +1,8 @@
 <h1>Reddits</h1>
+<p>
+  New reddit <%= link_to 'Create', new_reddit_path %>
+</p>
 <% @reddits.each do |r| %>
   <%= r.title %>
+  <%= link_to r, reddit_path(r) %>
 <% end %>

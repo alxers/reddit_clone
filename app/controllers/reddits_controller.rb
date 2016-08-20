@@ -9,13 +9,19 @@ class RedditsController < ApplicationController
   end
 
   def create
-    Reddit.create(params[:title])
+    @reddit = Reddit.create(reddit_params)
+    if @reddit.save
+      redirect_to @reddit
+    else
+      render 'new'
+    end
   end
 
   def edit
   end
 
   def show
+    @reddit = Reddit.find(params[:id])
   end
 
   def destroy
