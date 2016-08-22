@@ -5,7 +5,8 @@
 </p>
 <% @reddit.posts.each do |p| %>
   <p>
-    <%= link_to p.title, reddit_post_path(@reddit, p) %>
+    <%= link_to p.title, [@reddit, p] %>
+    <%= link_to 'Delete', [p.reddit, p], method: :delete %>
   </p>
 <% end %>
 <%= link_to 'Back', reddits_path %>

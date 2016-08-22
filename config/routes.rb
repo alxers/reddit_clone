@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   resources :reddits do
     resources :posts
   end
+
+  resources :posts do
+    resources :comments
+  end
 end
