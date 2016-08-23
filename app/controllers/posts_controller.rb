@@ -17,7 +17,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    find_reddit
     @post = Post.find(params[:id])
     @comment = @post.comments.build
   end
