@@ -1,12 +1,16 @@
 <h1><%= @reddit.title %></h1>
-<p>
-  New post <br>
-  <%= link_to 'Create post', new_reddit_post_path(@reddit) %>
-</p>
+
+<% if can? :create, @reddit.posts %>
+  <p>
+    New post <br>
+    <%= link_to 'Create post', new_reddit_post_path(@reddit) %>
+  </p>
+<% end %>
+
 <% @reddit.posts.each do |p| %>
   <p>
     <%= link_to p.title, [@reddit, p] %>
-    <%= link_to 'Delete', [p.reddit, p], method: :delete %>
+    <%= link_to 'Delete', [p.reddit, p], method: :delete if can? :delete, @reddit %>
   </p>
 <% end %>
 <%= link_to 'Back', reddits_path %>
