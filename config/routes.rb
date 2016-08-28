@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :comments
     resources :posts
+    resources :personal_messages
   end
 
   resources :reddits do
