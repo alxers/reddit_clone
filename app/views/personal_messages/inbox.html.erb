@@ -1,0 +1,11 @@
+<h3>Inbox</h3>
+
+<%= link_to 'New message', new_personal_message_path %><br>
+<%= link_to 'Sent', sent_personal_messages_path %>
+
+<% @inbox_messages.each do |msg| %>
+  <p>
+    <%= msg.title %><br>
+    <%= msg.body %><br>
+  </p>
+<% end %>

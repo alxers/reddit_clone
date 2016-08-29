@@ -1,0 +1,8 @@
+<h3>Sent</h3>
+
+<% @sent_messages.each do |msg| %>
+  <p>
+    <%= msg.title %><br>
+    <%= msg.body %><br>
+  </p>
+<% end %>

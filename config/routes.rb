@@ -9,7 +9,13 @@ Rails.application.routes.draw do
   resources :users do
     resources :comments
     resources :posts
-    resources :personal_messages
+  end
+
+  resources :personal_messages do
+    collection do
+      get 'inbox'
+      get 'sent'
+    end
   end
 
   resources :reddits do

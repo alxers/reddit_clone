@@ -1,9 +1,0 @@
-<h3>Inbox</h3>
-<!-- <%= link_to 'Sent', user_personal_messages_path(current_user) %> -->
-
-<% current_user.recieved_messages.each do |pm| %>
-  <p>
-    <%= pm.title %><br>
-    <%= pm.body %><br>
-  </p>
-<% end %>

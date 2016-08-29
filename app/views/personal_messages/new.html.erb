@@ -1,0 +1,17 @@
+<%= form_for @personal_message do |f| %>
+  <p>
+    <%= f.label :to %><br>
+    <%= f.text_field :reciever %>
+  </p>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
