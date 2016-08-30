@@ -1,8 +1,9 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :find_post, only: [:create, :destroy]
+
   def create
-    find_post
     @comment = @post.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
@@ -13,7 +14,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    find_post
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to post_path(@post)

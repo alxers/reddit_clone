@@ -10,8 +10,8 @@ class RedditsController < ApplicationController
   end
 
   def create
-    @reddit = Reddit.create(reddit_params)
-    if @reddit.save
+    @reddit = Reddit.new(reddit_params)
+    if @reddit
       redirect_to @reddit
     else
       render 'new'

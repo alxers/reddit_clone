@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829131644) do
+ActiveRecord::Schema.define(version: 20160830134800) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(version: 20160829131644) do
     t.integer  "reciever_id"
     t.integer  "sender_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "read",        default: false, null: false
   end
 
   add_index "personal_messages", ["user_id"], name: "index_personal_messages_on_user_id"
