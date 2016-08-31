@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :personal_messages do
+  resources :personal_messages, only: [:new, :create] do
     collection do
       get 'inbox'
       get 'sent'
