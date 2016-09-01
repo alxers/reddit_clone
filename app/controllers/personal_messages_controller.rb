@@ -5,7 +5,7 @@ class PersonalMessagesController < ApplicationController
   end
 
   def create
-    @personal_message.user = current_user
+    @personal_message = current_user.sent_messages.new(personal_messages_params)
     if @personal_message.save
       redirect_to inbox_personal_messages_path
     else
@@ -23,6 +23,6 @@ class PersonalMessagesController < ApplicationController
 
   private
     def personal_messages_params
-      params.require(:personal_message).permit(:title, :body)
+      params.require(:personal_message).permit(:reciever_login, :title, :body)
     end
 end

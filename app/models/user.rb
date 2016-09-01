@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
   has_many :reddits
-  has_many :recieved_messages, class_name: 'PersonalMessage'
-  has_many :sent_messages, class_name: 'PersonalMessage'
+  has_many :recieved_messages, class_name: 'PersonalMessage', foreign_key: :reciever_id
+  has_many :sent_messages, class_name: 'PersonalMessage', foreign_key: :sender_id
 
 end
