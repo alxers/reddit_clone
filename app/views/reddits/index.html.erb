@@ -1,9 +1,13 @@
 <h1>Reddits</h1>
 <% if can? :create, @reddits %>
   <p>
-    New reddit <%= link_to 'Create', new_reddit_path %>
+    <%= link_to 'New reddit ', new_reddit_path %>
   </p>
 <% end %>
 <% @reddits.each do |r| %>
-  <%= link_to r.title, reddit_path(r) %>
+  <h3><%= link_to r.title, reddit_path(r) %></h3>
+  <% if can? :edit, :destroy, r %>
+    <%= link_to 'Edit', edit_reddit_path(r) %>
+    <%= link_to 'Delete', reddit_path(r), method: :delete %>
+  <% end %>
 <% end %>

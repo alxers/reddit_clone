@@ -1,6 +1,8 @@
 class RedditsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :find_reddit, only: [:show, :destroy]
+
   def new
     @reddit = Reddit.new
   end
@@ -11,7 +13,7 @@ class RedditsController < ApplicationController
 
   def create
     @reddit = Reddit.new(reddit_params)
-    if @reddit
+    if @reddit.save
       redirect_to @reddit
     else
       render 'new'
@@ -22,15 +24,20 @@ class RedditsController < ApplicationController
   end
 
   def show
-    @reddit = Reddit.find(params[:id])
   end
 
   def destroy
+    @reddit.destroy
+    redirect_to reddits_path
   end
 
   private
 
     def reddit_params
       params.require(:reddit).permit(:title)
+    end
+
+    def find_reddit
+      @reddit = Reddit.find(params[:id])
     end
 end

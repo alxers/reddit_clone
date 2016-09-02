@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
 
+  before_action :find_reddit, only: [:create, :new, :destroy]
+
   def create
-    find_reddit
     @post = @reddit.posts.build(post_params)
     @post.user = current_user
     if @post.save
@@ -13,7 +14,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    find_reddit
     @post = @reddit.posts.build
   end
 
@@ -26,7 +26,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    find_reddit
     @post = @reddit.posts.find(params[:id])
     @post.destroy
     redirect_to reddit_path(@reddit)
