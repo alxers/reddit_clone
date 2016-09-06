@@ -3,5 +3,11 @@
 
 let xhttp = new XMLHttpRequest();
 
-xhttp.addEventListener('load', markAsRead());
-xhttp.open('GET', )
+document.addEventListener('click', function(e) {
+  let el = document.querySelector('.js-unread');
+
+  if (e.target === el) {
+    xhttp.open('get', "http://localhost:3333/personal_messages/inbox");
+    xhttp.send();
+  }
+})

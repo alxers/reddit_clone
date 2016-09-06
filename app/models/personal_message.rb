@@ -6,8 +6,7 @@ class PersonalMessage < ActiveRecord::Base
     reciever.try(:login)
   end
 
-  # private
-    def reciever_login=(login)
-      self.reciever_id = User.find_by(login: login).id
-    end
+  def reciever_login=(login)
+    self.reciever_id = User.find_by(login: login).id
+  end
 end
