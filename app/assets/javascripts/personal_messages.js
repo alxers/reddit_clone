@@ -4,10 +4,17 @@
 let xhttp = new XMLHttpRequest();
 
 document.addEventListener('click', function(e) {
-  let el = document.querySelector('.js-unread');
+  let els = document.querySelectorAll('.js-unread');
 
-  if (e.target === el) {
-    xhttp.open('get', "http://localhost:3333/personal_messages/inbox");
-    xhttp.send();
-  }
-})
+  Array.prototype.map.call(els, (el)=> {
+    let params = `id=${el.id}&read=${true}`;
+    let url = `http://localhost:3333/personal_messages/inbox?${params}`;
+
+    if (e.target === el) {
+      console.log(url)
+      xhttp.open('get', url);
+      xhttp.send();
+      el.classList.remove('js-unread');
+    }
+  });
+});

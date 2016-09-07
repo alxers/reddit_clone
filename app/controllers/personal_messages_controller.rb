@@ -15,6 +15,8 @@ class PersonalMessagesController < ApplicationController
 
   def inbox
     @inbox_messages = current_user.recieved_messages
+    message_id = params[:id]
+    mark_as_read(message_id) if message_id
   end
 
   def sent
@@ -24,5 +26,9 @@ class PersonalMessagesController < ApplicationController
   private
     def personal_messages_params
       params.require(:personal_message).permit(:reciever_login, :title, :body)
+    end
+
+    def mark_as_read(id)
+      PersonalMessage.find(id).update_attribute(:read, true)
     end
 end

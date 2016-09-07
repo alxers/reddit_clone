@@ -4,7 +4,7 @@
 <%= link_to 'Sent', sent_personal_messages_path %>
 
 <% @inbox_messages.each do |msg| %>
-  <p class="<%= 'js-unread' unless msg.read %>">
+  <p class="<%= 'js-unread' unless msg.read %>" id="<%= msg.id %>">
     Title: <%= msg.title %><br>
     Message: <%= msg.body %><br>
   </p>
