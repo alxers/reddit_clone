@@ -23,6 +23,9 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
+    member do
+      get 'vote'
+    end
     resources :comments
   end
 end

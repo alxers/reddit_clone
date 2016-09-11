@@ -9,10 +9,12 @@
 
 <% @reddit.posts.each do |p| %>
   <p>
+    <%= button_to 'upvote', vote_post_path(p) %>
+    <%= p.rating.votes %>
+    <%= button_to 'downvote', vote_post_path(p) %>
+
     <%= link_to p.title, [@reddit, p] %>
     <%= link_to 'Delete', [p.reddit, p], method: :delete if can? :delete, @reddit %>
-
-    <%= p.rating.votes %>
   </p>
 <% end %>
 <%= link_to 'Back', reddits_path %>

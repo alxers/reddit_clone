@@ -6,8 +6,6 @@
 <% end %>
 <% @reddits.each do |r| %>
   <p>
-    <%= button_to 'upvote', some_action_path, method: :post %>
-    <%= button_to 'downvote' %>
     <h3><%= link_to r.title, reddit_path(r) %></h3>
     <% if can? :edit, :destroy, r %>
       <%= link_to 'Edit', edit_reddit_path(r) %>

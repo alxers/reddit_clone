@@ -31,6 +31,10 @@ class PostsController < ApplicationController
     redirect_to reddit_path(@reddit)
   end
 
+  def vote
+    # @post.rating.up
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :body)
