@@ -32,7 +32,11 @@ class PostsController < ApplicationController
   end
 
   def vote
-    # @post.rating.up
+    if params[:data] == :upvote
+      # @post.rating.up
+    end
+    if params[:data] == :downvote
+    end
   end
 
   private
