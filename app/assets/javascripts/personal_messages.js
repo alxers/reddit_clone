@@ -1,7 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
-// TODO: use onreadystatechange to check status of xhr request
 let xhttp = new XMLHttpRequest();
 
 document.addEventListener('click', function(e) {
@@ -14,8 +13,12 @@ document.addEventListener('click', function(e) {
     if (e.target === el) {
       console.log(url)
       xhttp.open('get', url);
+      xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === XMLHttpRequest.DONE && xhttp.status === 200) {
+          el.classList.remove('js-unread');
+        }
+      }
       xhttp.send();
-      el.classList.remove('js-unread');
     }
   });
 });
