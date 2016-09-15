@@ -1,4 +1,5 @@
 class Rating < ActiveRecord::Base
+  # TODO: set up many-to-many between rating, reddits, posts and comments
   belongs_to :posts
   belongs_to :comments
 
