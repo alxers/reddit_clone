@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   validates :body, presence: true,
                   length: { minimum: 1 }
 
-  before_create do
-    self.build_rating
-  end
+  # before_create do
+  #   self.build_rating
+  # end
 end
