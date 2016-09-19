@@ -1,8 +1,5 @@
-class Rating < ActiveRecord::Base
-  belongs_to :posts
-  belongs_to :comments
-  belongs_to :reddits
-  belongs_to :user
+class Vote < ActiveRecord::Base
+  belongs_to :votable, polymorphic: true
 
   private
     def up

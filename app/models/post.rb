@@ -2,8 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :reddit
   has_many :comments, dependent: :destroy
-  has_many :ratings
-  has_many :users, through: :ratings
+  has_many :votes, as: :votable
 
   validates :title, presence: true,
                    length: { minimum: 1 }
