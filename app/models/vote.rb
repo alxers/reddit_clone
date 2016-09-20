@@ -3,10 +3,10 @@ class Vote < ActiveRecord::Base
 
   private
     def up
-      self.update_attribute(votes: votes + 1)
+      self.update_attribute(vote: vote + 1)
     end
 
     def down
-      self.update_attribute(votes: votes - 1)
+      self.update_attribute(vote: vote - 1)
     end
 end

@@ -10,7 +10,7 @@
 <% @reddit.posts.each do |p| %>
   <p>
     <%= button_to 'upvote', vote_post_path(p, data: :upvote) %>
-    <%= p.rating.votes %>
+    <%= binding.pry; p.votes.vote %>
     <%= button_to 'downvote', vote_post_path(p, data: :downvote) %>
 
     <%= link_to p.title, [@reddit, p] %>
