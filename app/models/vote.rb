@@ -9,4 +9,5 @@ class Vote < ActiveRecord::Base
     def down
       self.update_attribute(vote: vote - 1)
     end
+
 end

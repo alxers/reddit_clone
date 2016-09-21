@@ -11,6 +11,10 @@ class Post < ActiveRecord::Base
                   length: { minimum: 1 }
 
   before_create do
-    self.build_vote
+    self.votes.build
+  end
+
+  def sum_all
+    votes.map(&:vote).inject(0, &:+)
   end
 end
