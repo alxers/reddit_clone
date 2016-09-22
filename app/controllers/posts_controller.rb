@@ -33,10 +33,10 @@ class PostsController < ApplicationController
 
   def vote
     if params[:data] == :upvote
-      # @post.rating.up
     end
     if params[:data] == :downvote
     end
+    redirect_to :back
   end
 
   private
