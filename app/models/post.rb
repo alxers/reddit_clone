@@ -10,9 +10,9 @@ class Post < ActiveRecord::Base
   validates :body, presence: true,
                   length: { minimum: 1 }
 
-  before_create do
-    self.votes.build
-  end
+  # before_create do
+  #   self.votes.build
+  # end
 
   def sum_all
     votes.map(&:vote).inject(0, &:+)

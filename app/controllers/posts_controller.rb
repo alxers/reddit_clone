@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   def create
     @post = @reddit.posts.build(post_params)
     @post.user = current_user
+    @post.votes.build(user_id: current_user.id) # TODO: upvote when created
     if @post.save
       redirect_to reddit_path(@reddit)
     else
