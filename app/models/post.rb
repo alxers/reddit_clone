@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
                   length: { minimum: 1 }
 
   before_create do
-    votes.build(user_id: user)
+    votes.build(user_id: user.id)
   end
 
   def sum_all
