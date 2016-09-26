@@ -14,7 +14,4 @@ class Post < ActiveRecord::Base
     votes.build(user_id: user.id)
   end
 
-  def sum_all
-    votes.map(&:vote).inject(0, &:+)
-  end
 end
