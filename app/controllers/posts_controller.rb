@@ -32,7 +32,9 @@ class PostsController < ApplicationController
   end
 
   def vote
+    # binding.pry
     if params[:data] == :upvote
+      # @post.
     end
     if params[:data] == :downvote
     end
