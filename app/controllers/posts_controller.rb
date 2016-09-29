@@ -32,11 +32,12 @@ class PostsController < ApplicationController
   end
 
   def vote
-    # binding.pry
     if params[:data] == :upvote
-      # @post.
+      @post.votes.create(user_id: current_user.id)
     end
     if params[:data] == :downvote
+      # TODO: destroy vote
+      # @post.votes
     end
     redirect_to :back
   end
