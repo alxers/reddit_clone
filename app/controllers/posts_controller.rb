@@ -32,12 +32,11 @@ class PostsController < ApplicationController
   end
 
   def vote
-    if params[:data] == :upvote
+    if params[:data] == 'upvote'
       @post.votes.create(user_id: current_user.id)
     end
-    if params[:data] == :downvote
-      # TODO: destroy vote
-      # @post.votes
+    if params[:data] == 'downvote'
+      Vote.where(user_id: current_user.id).destroy_all
     end
     redirect_to :back
   end
