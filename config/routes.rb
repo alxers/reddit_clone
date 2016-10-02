@@ -13,19 +13,28 @@ Rails.application.routes.draw do
 
   resources :personal_messages, only: [:new, :create] do
     collection do
-      get 'inbox'
-      get 'sent'
+      get :inbox
+      get :sent
     end
   end
 
   resources :reddits do
+    member do
+      post :vote
+    end
     resources :posts
   end
 
   resources :posts do
     member do
-      post 'vote'
+      post :vote
     end
     resources :comments
+  end
+
+  resources :comments do
+    member do
+      post :vote
+    end
   end
 end
