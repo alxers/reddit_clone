@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
 
+  include Voter
+
   before_action :find_reddit, only: [:create, :new, :destroy]
 
   def create
@@ -31,14 +33,8 @@ class PostsController < ApplicationController
     redirect_to reddit_path(@reddit)
   end
 
-  def vote
-    if params[:data] == 'upvote'
-      @post.votes.create(user_id: current_user.id)
-    end
-    if params[:data] == 'downvote'
-      Vote.where(user_id: current_user.id).destroy_all
-    end
-    redirect_to :back
+  def resource
+    @post
   end
 
   private
