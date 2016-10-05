@@ -1,6 +1,8 @@
 class RedditsController < ApplicationController
   load_and_authorize_resource
 
+  include Voter
+
   def new
     @reddit = Reddit.new
   end
@@ -30,10 +32,14 @@ class RedditsController < ApplicationController
     redirect_to reddits_path
   end
 
+  def resource
+    @reddit
+  end
+
   private
 
     def reddit_params
       params.require(:reddit).permit(:title)
     end
-    
+
 end
