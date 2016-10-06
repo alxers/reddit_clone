@@ -1,4 +1,9 @@
 <h1><%= @reddit.title %></h1>
+<p>
+  <%= button_to 'upvote', vote_reddit_path(@reddit, data: :upvote) %>
+  <%= @reddit.votes.count %>
+  <%= button_to 'downvote', vote_reddit_path(@reddit, data: :downvote) %>
+</p>
 
 <% if can? :create, @reddit.posts %>
   <p>

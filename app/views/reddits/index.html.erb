@@ -7,6 +7,11 @@
 <% @reddits.each do |r| %>
   <p>
     <h3><%= link_to r.title, reddit_path(r) %></h3>
+    <p>
+      <%= button_to 'upvote', vote_reddit_path(r, data: :upvote) %>
+      <%= r.votes.count %>
+      <%= button_to 'downvote', vote_reddit_path(r, data: :downvote) %>
+    </p>
     <% if can? :edit, :destroy, r %>
       <%= link_to 'Edit', edit_reddit_path(r) %>
       <%= link_to 'Delete', reddit_path(r), method: :delete %>
