@@ -1,4 +1,9 @@
 <h2><%= @post.title %></h2>
+<p>
+  <%= button_to 'upvote', vote_post_path(@post, data: :upvote) %>
+  <%= @post.votes.count %>
+  <%= button_to 'downvote', vote_post_path(@post, data: :downvote) %>
+</p>
 <%= show_author(@post) %> <br>
 <%= @post.body %>
 
@@ -14,6 +19,14 @@
 <% end %>
 
 <% @post.comments.each do |c| %>
+  <!-- TODO: remove comment with id = nil -->
+  <% if c.valid? %>
+    <p>
+      <%= button_to 'upvote', vote_comment_path(c, data: :upvote) %>
+      <%= c.votes.count %>
+      <%= button_to 'downvote', vote_comment_path(c, data: :downvote) %>
+    </p>
+  <% end %>
   <% if c.user && show_author(c) != PostsHelper::ANONYMOUS_USER %>
     <%= link_to show_author(c), user_path(c.user) %>
   <% else %>
