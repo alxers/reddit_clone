@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   load_and_authorize_resource
 
+  include Voter
+
   before_action :find_post, only: [:create, :destroy]
 
   def create
@@ -17,6 +19,10 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
     @comment.destroy
     redirect_to post_path(@post)
+  end
+
+  def resource
+    @comment
   end
 
   private
