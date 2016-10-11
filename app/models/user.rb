@@ -10,5 +10,7 @@ class User < ActiveRecord::Base
   has_many :recieved_messages, class_name: 'PersonalMessage', foreign_key: :reciever_id
   has_many :sent_messages, class_name: 'PersonalMessage', foreign_key: :sender_id
   has_many :votes
+  has_many :followers, class_name: 'Friendship', foreign_key: :follower_id
+  has_many :followed, class_name: 'Friendship', foreign_key: :followed_id
 
 end
