@@ -24,11 +24,12 @@ class PersonalMessagesController < ApplicationController
   end
 
   private
-    def personal_messages_params
-      params.require(:personal_message).permit(:reciever_login, :title, :body)
-    end
+  
+  def personal_messages_params
+    params.require(:personal_message).permit(:reciever_login, :title, :body)
+  end
 
-    def mark_as_read(id)
-      PersonalMessage.find(id).update_attribute(:read, true)
-    end
+  def mark_as_read(id)
+    PersonalMessage.find(id).update_attribute(:read, true)
+  end
 end
