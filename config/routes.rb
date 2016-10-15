@@ -37,4 +37,6 @@ Rails.application.routes.draw do
       post :vote
     end
   end
+
+  resources :friends
 end
