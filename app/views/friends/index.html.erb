@@ -1,0 +1,13 @@
+<h3>
+  Followers:
+</h3>
+<% current_user.followers.each do |f| %>
+  <%= f.name %>
+<% end %>
+
+<h3>
+  Follows:
+</h3>
+<% current_user.followed.each do |f| %>
+  <%= f.name %>
+<% end %>
